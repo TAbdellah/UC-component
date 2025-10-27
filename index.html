@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
@@ -37,7 +38,7 @@
         header h1 {
             font-size: 2.8em;
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .subtitle {
@@ -51,7 +52,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         nav ul {
@@ -141,11 +142,11 @@
         }
 
         .composant-image {
-            flex: 0 0 300px;
+            /* flex: 0 0 300px; */
             height: 250px;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .composant-image img {
@@ -212,7 +213,7 @@
             padding: 20px;
             border-radius: 10px;
             border-left: 4px solid #667eea;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .carac-item strong {
@@ -257,7 +258,7 @@
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .comparaison-table th {
@@ -292,7 +293,7 @@
             padding: 25px;
             border-radius: 15px;
             margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .quiz-question h3 {
@@ -403,13 +404,13 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
         .gallery-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item img {
@@ -429,7 +430,7 @@
             header h1 {
                 font-size: 2em;
             }
-            
+
             .content {
                 padding: 25px;
             }
@@ -442,8 +443,93 @@
                 flex: 0 0 100%;
             }
         }
+
+
+
+
+        .video-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border-left: 6px solid #17a2b8;
+        }
+
+        .video-section h2 {
+            color: #0c7489;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .video-description {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .video-description h4 {
+            color: #0c7489;
+            margin-bottom: 10px;
+        }
+
+        .situation-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin: 25px 0;
+        }
+
+        .situation-image {
+            flex: 0 0 28%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .situation-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.95em;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -474,22 +560,34 @@
 
             <div class="section" id="situation">
                 <h2>🎯 Situation Problème - Le Cas d'Adil</h2>
-                <div class="situation-probleme">
-                    <h3>📖 Le Contexte</h3>
-                    <p><strong>Adil</strong> a trouvé une bonne affaire : un vieil ordinateur gamer des années 2010 à bas prix. Le vendeur dit que l'ordinateur marche très bien, mais Adil n'est pas sûr.</p>
-                    
-                    <h3>⚠️ Le Problème</h3>
-                    <p>Quand il ouvre le boîtier, il voit que :</p>
-                    <ul style="margin-left: 25px; margin-top: 10px;">
-                        <li>Tout est très poussiéreux</li>
-                        <li>Les ventilateurs ne tournent pas bien</li>
-                        <li>Certaines pièces semblent cassées</li>
-                        <li>Il ne sait pas identifier les composants</li>
-                    </ul>
-                    
-                    <h3>❓ La Question</h3>
-                    <p><strong>Comment Adil peut-il identifier les composants internes pour vérifier leur état et comprendre le fonctionnement de son ordinateur ?</strong></p>
+                <div class="situation-container">
+                    <div class="situation-probleme">
+                        <h3>📖 Le Contexte</h3>
+                        <p><strong>Adil</strong> a trouvé une bonne affaire : un vieil ordinateur gamer des années 2010
+                            à
+                            bas prix. Le vendeur dit que l'ordinateur marche très bien, mais Adil n'est pas sûr.</p>
+
+                        <h3>⚠️ Le Problème</h3>
+                        <p>Quand il ouvre le boîtier, il voit que :</p>
+                        <ul style="margin-left: 25px; margin-top: 10px;">
+                            <li>Tout est très poussiéreux</li>
+                            <li>Les ventilateurs ne tournent pas bien</li>
+                            <li>Certaines pièces semblent cassées</li>
+                            <li>Il ne sait pas identifier les composants</li>
+                        </ul>
+
+                        <h3>❓ La Question</h3>
+                        <p><strong>Comment Adil peut-il identifier les composants internes pour vérifier leur état et
+                                comprendre le fonctionnement de son ordinateur ?</strong></p>
+                    </div>
+
+                    <div class="situation-image">
+                        <img src="https://preview.redd.it/10-year-old-computer-motherboard-revived-once-again-with-a-v0-pemjiqdzfkr81.jpg?width=1080&crop=smart&auto=webp&s=0d957068f75ca199f91e39b6e41eb1f243107949"
+                            alt="Vieux boitier d'ordinateur poussiéreux - Cas d'Adil">
+                        <p class="image-caption">💡 L'ordinateur poussiéreux </p><br>
+                    </div>
                 </div>
+
             </div>
 
             <div class="section" id="composants">
@@ -503,10 +601,11 @@
                         <div class="composant-info">
                             <h3>🧠 Le Processeur (CPU)</h3>
                             <p class="subtitle-comp">Le cerveau de l'ordinateur</p>
-                            <p><strong>Rôle :</strong> Effectue tous les calculs et traite toutes les informations. Plus il est rapide, plus l'ordinateur est performant.</p>
+                            <p><strong>Rôle :</strong> Effectue tous les calculs et traite toutes les informations. Plus
+                                il est rapide, plus l'ordinateur est performant.</p>
                         </div>
                     </div>
-                    
+
                     <div class="detail-section">
                         <h4>📊 Caractéristiques Importantes</h4>
                         <div class="caracteristiques">
@@ -527,7 +626,8 @@
 
                     <div class="saviez-vous">
                         <h5>💡 Le Saviez-vous ?</h5>
-                        <p>Un processeur moderne peut effectuer plus de 100 milliards d'opérations par seconde ! C'est comme résoudre 100 milliards de problèmes de maths en 1 seconde.</p>
+                        <p>Un processeur moderne peut effectuer plus de 100 milliards d'opérations par seconde ! C'est
+                            comme résoudre 100 milliards de problèmes de maths en 1 seconde.</p>
                     </div>
                 </div>
 
@@ -537,12 +637,13 @@
                             <img src="https://i.imgur.com/uoT2YwA.png" alt="Mémoire RAM">
                         </div>
                         <div class="composant-info">
-                            <h3>💾 La Mémoire RAM</h3>
+                            <h3>💾 La Mémoire vive (RAM)</h3>
                             <p class="subtitle-comp">La mémoire de travail temporaire</p>
-                            <p><strong>Rôle :</strong> Stocke temporairement les programmes et données en cours d'utilisation. Plus il y a de RAM, plus on peut faire de choses simultanément.</p>
+                            <p><strong>Rôle :</strong> Stocke temporairement les programmes et données en cours
+                                d'utilisation. Plus il y a de RAM, plus on peut faire de choses simultanément.</p>
                         </div>
                     </div>
-                    
+
                     <div class="detail-section">
                         <h4>⚙️ Comment ça marche ?</h4>
                         <p>Imaginez la RAM comme un bureau de travail :</p>
@@ -569,22 +670,24 @@
 
                     <div class="conseil-pratique">
                         <h4>💡 Conseil pour Adil</h4>
-                        <p>Pour les jeux, il faut au minimum 8 GB de RAM. Un PC de 2010 avec 4 GB sera trop juste pour les jeux modernes.</p>
+                        <p>Pour les jeux, il faut au minimum 8 GB de RAM. Un PC de 2010 avec 4 GB sera trop juste pour
+                            les jeux modernes.</p>
                     </div>
                 </div>
 
                 <div class="composant-card">
                     <div class="composant-header">
                         <div class="composant-image">
-                            <img src="https://i.imgur.com/IuC9JCt.png" alt="Disque dur">
+                            <img src="https://i.imgur.com/WYENdKP.png" style="width: 100%;" alt="Disque dur">
                         </div>
                         <div class="composant-info">
-                            <h3>💿 Le Disque (HDD/SSD)</h3>
+                            <h3>💾 Les disques de stockage</h3>
                             <p class="subtitle-comp">La mémoire de stockage permanent</p>
-                            <p><strong>Rôle :</strong> Garde tous vos fichiers, programmes et le système même quand l'ordinateur est éteint.</p>
+                            <p><strong>Rôle :</strong> Garde tous vos fichiers, programmes et le système même quand
+                                l'ordinateur est éteint.</p>
                         </div>
                     </div>
-                    
+
                     <div class="detail-section">
                         <h4>🔄 HDD vs SSD</h4>
                         <table class="comparaison-table">
@@ -622,420 +725,684 @@
                     </div>
                 </div>
 
-                <div class="composant-card">
-                    <div class="composant-header">
-                        <div class="composant-image">
-                            <img src="https://i.imgur.com/7xmWMsb.png" alt="Carte mère">
-                        </div>
-                        <div class="composant-info">
-                            <h3>🔌 La Carte Mère</h3>
-                            <p class="subtitle-comp">Le circuit principal de connexion</p>
-                            <p><strong>Rôle :</strong> Relie tous les composants entre eux et permet la communication entre le CPU, la RAM, le disque dur et les périphériques.</p>
+                <div class="content">
+                    <div class="video-section">
+                        <h2>📹 Vidéo Pédagogique - Comparaison HDD vs SSD vs M.2 vs NVMe</h2>
+                        <div style="text-align: center; margin: 20px 0;">
+                            <a href="https://youtu.be/MpNagBwWlNk" target="_blank"
+                                style="display: inline-block; background: #dc3545; color: white; padding: 15px 40px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1em;">
+                                ▶️ Cliquez pour regarder la vidéo sur YouTube
+                            </a>
+                            <p style="margin-top: 15px; color: #666; font-size: 0.95em;">
+                                (S'ouvre dans un nouvel onglet)
+                            </p>
                         </div>
                     </div>
-                    
-                    <div class="detail-section">
-                        <h4>🔧 Composants connectés</h4>
-                        <ul>
-                            <li><strong>Socket CPU :</strong> Emplacement pour le processeur</li>
-                            <li><strong>Slots RAM :</strong> Emplacements pour les barrettes mémoire (2 à 4 slots)</li>
-                            <li><strong>Slots PCIe :</strong> Pour carte graphique, carte son, etc.</li>
-                            <li><strong>Connecteurs SATA :</strong> Pour disques durs et SSD</li>
-                            <li><strong>Ports I/O :</strong> USB, HDMI, Ethernet, audio...</li>
-                        </ul>
+
+                    <div class="composant-card">
+                        <div class="composant-header">
+                            <div class="composant-image">
+                                <img src="https://i.imgur.com/7xmWMsb.png" alt="Carte mère">
+                            </div>
+                            <div class="composant-info">
+                                <h3>🔌 La Carte Mère</h3>
+                                <p class="subtitle-comp">Le circuit principal de connexion</p>
+                                <p><strong>Rôle :</strong> Relie tous les composants entre eux et permet la
+                                    communication entre le CPU, la RAM, le disque dur et les périphériques.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h4>🔧 Composants connectés</h4>
+                            <ul>
+                                <li><strong>Socket CPU :</strong> Emplacement pour le processeur</li>
+                                <li><strong>Slots RAM :</strong> Emplacements pour les barrettes mémoire (2 à 4 slots)
+                                </li>
+                                <li><strong>Slots PCIe :</strong> Pour carte graphique, carte son, etc.</li>
+                                <li><strong>Connecteurs SATA :</strong> Pour disques durs et SSD</li>
+                                <li><strong>Ports I/O :</strong> USB, HDMI, Ethernet, audio...</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="composant-card">
+                        <div class="composant-header">
+                            <div class="composant-image">
+                                <img src="https://i.imgur.com/nCdAHs2.png" alt="Alimentation PC">
+                            </div>
+                            <div class="composant-info">
+                                <h3>⚡ L'Alimentation (PSU)</h3>
+                                <p class="subtitle-comp">La source d'énergie</p>
+                                <p><strong>Rôle :</strong> Convertit le courant électrique et fournit l'énergie
+                                    nécessaire à tous les composants.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h4>📊 Caractéristiques</h4>
+                            <div class="caracteristiques">
+                                <div class="carac-item">
+                                    <strong>Puissance (Watts)</strong>
+                                    <p>400W, 500W, 650W, 750W... Dépend des composants</p>
+                                </div>
+                                <div class="carac-item">
+                                    <strong>Certification</strong>
+                                    <p>80+ Bronze, Silver, Gold, Platinum (efficacité énergétique)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="conseil-pratique">
+                            <h4>⚠️ Important</h4>
+                            <p>Une alimentation de mauvaise qualité peut endommager tous les composants de l'ordinateur.
+                                C'est un élément crucial !</p>
+                        </div>
+                    </div>
+
+                    <div class="composant-card">
+                        <div class="composant-header">
+                            <div class="composant-image">
+                                <img src="https://i.imgur.com/EV2ITBd.png" alt="Ventilateur PC">
+                            </div>
+                            <div class="composant-info">
+                                <h3>🌡️ Les Ventilateurs</h3>
+                                <p class="subtitle-comp">Le système de refroidissement</p>
+                                <p><strong>Rôle :</strong> Refroidit les composants, surtout le CPU et la carte
+                                    graphique qui chauffent beaucoup. Sans ventilation, risque de surchauffe.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h4>🔥 Importance du refroidissement</h4>
+                            <ul>
+                                <li>Le CPU peut atteindre 80-90°C sous charge</li>
+                                <li>La poussière bloque le flux d'air et cause la surchauffe</li>
+                                <li>Une surchauffe réduit les performances et peut endommager les composants</li>
+                                <li>Il faut nettoyer régulièrement les ventilateurs</li>
+                            </ul>
+                        </div>
+
+                        <div class="conseil-pratique">
+                            <h4>💡 Pour Adil</h4>
+                            <p>Les ventilateurs poussiéreux et qui tournent mal sont un problème sérieux ! Il devra les
+                                nettoyer ou les remplacer avant d'utiliser l'ordinateur pour les jeux.</p>
+                        </div>
+                    </div>
+
+                    <div class="composant-card">
+                        <div class="composant-header">
+                            <div class="composant-image">
+                                <img src="https://i.imgur.com/ck4CWKF.png" alt="Carte graphique">
+                            </div>
+                            <div class="composant-info">
+                                <h3>🎮 La Carte Graphique (GPU)</h3>
+                                <p class="subtitle-comp">Le processeur graphique</p>
+                                <p><strong>Rôle :</strong> Traite l'affichage des images et vidéos. Essentielle pour les
+                                    jeux vidéo et les applications graphiques.</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h4>🎯 Importance pour les jeux</h4>
+                            <ul>
+                                <li>La carte graphique est LE composant le plus important pour les jeux</li>
+                                <li>Elle calcule et affiche des millions de pixels par seconde</li>
+                                <li>Plus elle est puissante, plus les jeux sont fluides et beaux</li>
+                                <li>Les cartes de 2010 ne peuvent pas faire tourner les jeux récents en haute qualité
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-section">
+                            <h4>📊 Marques principales</h4>
+                            <div class="caracteristiques">
+                                <div class="carac-item">
+                                    <strong>NVIDIA</strong>
+                                    <p>GeForce GTX, RTX (20, 30, 40 series)</p>
+                                </div>
+                                <div class="carac-item">
+                                    <strong>AMD</strong>
+                                    <p>Radeon RX (5000, 6000, 7000 series)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="saviez-vous">
+                            <h5>💡 Le Saviez-vous ?</h5>
+                            <p>Une carte graphique moderne a plus de puissance de calcul que les superordinateurs des
+                                années 1990 !</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="composant-card">
                     <div class="composant-header">
                         <div class="composant-image">
-                            <img src="https://i.imgur.com/nCdAHs2.png" alt="Alimentation PC">
+                            <img src="https://i.imgur.com/h4QTr00.png" alt="Carte réseau">
                         </div>
                         <div class="composant-info">
-                            <h3>⚡ L'Alimentation (PSU)</h3>
-                            <p class="subtitle-comp">La source d'énergie</p>
-                            <p><strong>Rôle :</strong> Convertit le courant électrique et fournit l'énergie nécessaire à tous les composants.</p>
+                            <h3>🌐 La Carte Réseau Rj45</h3>
+                            <p class="subtitle-comp">La connexion Internet filaire</p>
+                            <p><strong>Rôle :</strong> Permet à l'ordinateur de se connecter à un réseau ou à Internet
+                                via un câble Ethernet. Indispensable pour la connexion filaire stable et rapide.</p>
                         </div>
                     </div>
-                    
+
                     <div class="detail-section">
-                        <h4>📊 Caractéristiques</h4>
+                        <h4>🔗 Comment ça marche ?</h4>
+                        <p>La carte réseau reçoit les données via un câble Ethernet et les transforme en signaux que
+                            l'ordinateur peut comprendre. Elle permet aussi d'envoyer des données vers le réseau.</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4>📊 Caractéristiques Principales</h4>
                         <div class="caracteristiques">
                             <div class="carac-item">
-                                <strong>Puissance (Watts)</strong>
-                                <p>400W, 500W, 650W, 750W... Dépend des composants</p>
+                                <strong>Vitesse</strong>
+                                <p>1 Gbps (standard), 2.5 Gbps ou 10 Gbps (récents)</p>
                             </div>
                             <div class="carac-item">
-                                <strong>Certification</strong>
-                                <p>80+ Bronze, Silver, Gold, Platinum (efficacité énergétique)</p>
+                                <strong>Port RJ45</strong>
+                                <p>Prise où on branche le câble Ethernet</p>
+                            </div>
+                            <div class="carac-item">
+                                <strong>Intégration</strong>
+                                <p>Souvent sur la carte mère moderne</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="conseil-pratique">
-                        <h4>⚠️ Important</h4>
-                        <p>Une alimentation de mauvaise qualité peut endommager tous les composants de l'ordinateur. C'est un élément crucial !</p>
+                        <h4>💡 Conseil</h4>
+                        <p>Pour les jeux en ligne, une connexion Ethernet est recommandée car elle offre une latence
+                            plus faible et une connexion plus stable que le WiFi.</p>
                     </div>
                 </div>
 
                 <div class="composant-card">
                     <div class="composant-header">
                         <div class="composant-image">
-                            <img src="https://i.imgur.com/EV2ITBd.png" alt="Ventilateur PC">
+                            <img src="https://i.imgur.com/iII1WnU.png" alt="Carte WiFi">
                         </div>
                         <div class="composant-info">
-                            <h3>🌡️ Les Ventilateurs</h3>
-                            <p class="subtitle-comp">Le système de refroidissement</p>
-                            <p><strong>Rôle :</strong> Refroidit les composants, surtout le CPU et la carte graphique qui chauffent beaucoup. Sans ventilation, risque de surchauffe.</p>
+                            <h3>📡 La Carte WiFi</h3>
+                            <p class="subtitle-comp">La connexion Internet sans fil</p>
+                            <p><strong>Rôle :</strong> Permet à l'ordinateur de se connecter à Internet sans fil via une
+                                connexion WiFi. Pratique pour la mobilité mais moins stable que l'Ethernet.</p>
                         </div>
-                    </div>
-                    
-                    <div class="detail-section">
-                        <h4>🔥 Importance du refroidissement</h4>
-                        <ul>
-                            <li>Le CPU peut atteindre 80-90°C sous charge</li>
-                            <li>La poussière bloque le flux d'air et cause la surchauffe</li>
-                            <li>Une surchauffe réduit les performances et peut endommager les composants</li>
-                            <li>Il faut nettoyer régulièrement les ventilateurs</li>
-                        </ul>
                     </div>
 
-                    <div class="conseil-pratique">
-                        <h4>💡 Pour Adil</h4>
-                        <p>Les ventilateurs poussiéreux et qui tournent mal sont un problème sérieux ! Il devra les nettoyer ou les remplacer avant d'utiliser l'ordinateur pour les jeux.</p>
-                    </div>
-                </div>
-
-                <div class="composant-card">
-                    <div class="composant-header">
-                        <div class="composant-image">
-                            <img src="https://i.imgur.com/ck4CWKF.png" alt="Carte graphique">
-                        </div>
-                        <div class="composant-info">
-                            <h3>🎮 La Carte Graphique (GPU)</h3>
-                            <p class="subtitle-comp">Le processeur graphique</p>
-                            <p><strong>Rôle :</strong> Traite l'affichage des images et vidéos. Essentielle pour les jeux vidéo et les applications graphiques.</p>
-                        </div>
-                    </div>
-                    
                     <div class="detail-section">
-                        <h4>🎯 Importance pour les jeux</h4>
+                        <h4>📶 Types de WiFi</h4>
                         <ul>
-                            <li>La carte graphique est LE composant le plus important pour les jeux</li>
-                            <li>Elle calcule et affiche des millions de pixels par seconde</li>
-                            <li>Plus elle est puissante, plus les jeux sont fluides et beaux</li>
-                            <li>Les cartes de 2010 ne peuvent pas faire tourner les jeux récents en haute qualité</li>
+                            <li><strong>WiFi 5 (802.11ac) :</strong> Vitesse jusqu'à 1.3 Gbps</li>
+                            <li><strong>WiFi 6 (802.11ax) :</strong> Vitesse jusqu'à 9.6 Gbps (plus récent et rapide)
+                            </li>
+                            <li><strong>Intégrée ou PCIe :</strong> Peut être sur la carte mère ou en carte séparée</li>
                         </ul>
                     </div>
 
                     <div class="detail-section">
-                        <h4>📊 Marques principales</h4>
+                        <h4>⚖️ Avantages et Inconvénients</h4>
                         <div class="caracteristiques">
                             <div class="carac-item">
-                                <strong>NVIDIA</strong>
-                                <p>GeForce GTX, RTX (20, 30, 40 series)</p>
+                                <strong>Avantages</strong>
+                                <p>Mobilité, pas de câbles, pratique</p>
                             </div>
                             <div class="carac-item">
-                                <strong>AMD</strong>
-                                <p>Radeon RX (5000, 6000, 7000 series)</p>
+                                <strong>Inconvénients</strong>
+                                <p>Moins stable, latence plus élevée, interférences possibles</p>
+                            </div>
+                            <div class="carac-item">
+                                <strong>Portée</strong>
+                                <p>Dépend du routeur, affaiblit avec la distance</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="saviez-vous">
                         <h5>💡 Le Saviez-vous ?</h5>
-                        <p>Une carte graphique moderne a plus de puissance de calcul que les superordinateurs des années 1990 !</p>
+                        <p>Le WiFi 6 peut être jusqu'à 3 fois plus rapide que le WiFi 5, mais vous avez besoin d'un
+                            routeur WiFi 6 pour en profiter !</p>
+                    </div>
+
+                    <div class="conseil-pratique">
+                        <h4>⚠️ Pour les jeux</h4>
+                        <p>Si vous jouez en ligne, préférez une connexion Ethernet. Si le WiFi est obligatoire,
+                            assurez-vous d'avoir un signal fort (proche du routeur) pour minimiser la latence.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="section" id="quiz">
-                <div class="quiz-section">
-                    <h2>🎯 Quiz Interactif - Testez vos connaissances</h2>
-                    
-                    <div class="quiz-question">
-                        <h3>Question 1 : Quel composant est considéré comme le "cerveau" de l'ordinateur ?</h3>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="checkAnswer(1, 'a')">A) La RAM</div>
-                            <div class="quiz-option" onclick="checkAnswer(1, 'b')">B) Le Processeur (CPU)</div>
-                            <div class="quiz-option" onclick="checkAnswer(1, 'c')">C) La Carte Mère</div>
-                            <div class="quiz-option" onclick="checkAnswer(1, 'd')">D) Le Disque Dur</div>
-                        </div>
-                        <div id="result1" class="result hide"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>Question 2 : Quel composant garde vos fichiers même quand l'ordinateur est éteint ?</h3>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="checkAnswer(2, 'a')">A) La RAM</div>
-                            <div class="quiz-option" onclick="checkAnswer(2, 'b')">B) Le Processeur</div>
-                            <div class="quiz-option" onclick="checkAnswer(2, 'c')">C) Le Disque Dur</div>
-                            <div class="quiz-option" onclick="checkAnswer(2, 'd')">D) Le Ventilateur</div>
-                        </div>
-                        <div id="result2" class="result hide"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>Question 3 : Quel est le rôle principal de la carte mère ?</h3>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="checkAnswer(3, 'a')">A) Refroidir l'ordinateur</div>
-                            <div class="quiz-option" onclick="checkAnswer(3, 'b')">B) Relier tous les composants entre eux</div>
-                            <div class="quiz-option" onclick="checkAnswer(3, 'c')">C) Stocker les données</div>
-                            <div class="quiz-option" onclick="checkAnswer(3, 'd')">D) Afficher les images</div>
-                        </div>
-                        <div id="result3" class="result hide"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>Question 4 : Pourquoi les ventilateurs sont-ils importants ?</h3>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="checkAnswer(4, 'a')">A) Pour faire du bruit</div>
-                            <div class="quiz-option" onclick="checkAnswer(4, 'b')">B) Pour décorer l'ordinateur</div>
-                            <div class="quiz-option" onclick="checkAnswer(4, 'c')">C) Pour refroidir les composants et éviter la surchauffe</div>
-                            <div class="quiz-option" onclick="checkAnswer(4, 'd')">D) Pour augmenter la vitesse du processeur</div>
-                        </div>
-                        <div id="result4" class="result hide"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>Question 5 : Quel composant est le plus important pour les jeux vidéo ?</h3>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="checkAnswer(5, 'a')">A) L'alimentation</div>
-                            <div class="quiz-option" onclick="checkAnswer(5, 'b')">B) La carte graphique (GPU)</div>
-                            <div class="quiz-option" onclick="checkAnswer(5, 'c')">C) La carte mère</div>
-                            <div class="quiz-option" onclick="checkAnswer(5, 'd')">D) Le ventilateur</div>
-                        </div>
-                        <div id="result5" class="result hide"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>Question 6 : Quelle est la différence principale entre HDD et SSD ?</h3>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="checkAnswer(6, 'a')">A) Le SSD est beaucoup plus rapide</div>
-                            <div class="quiz-option" onclick="checkAnswer(6, 'b')">B) Le HDD est plus rapide</div>
-                            <div class="quiz-option" onclick="checkAnswer(6, 'c')">C) Ils ont la même vitesse</div>
-                            <div class="quiz-option" onclick="checkAnswer(6, 'd')">D) Le SSD ne peut pas stocker de données</div>
-                        </div>
-                        <div id="result6" class="result hide"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>Question 7 : Que se passe-t-il si la RAM est pleine ?</h3>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="checkAnswer(7, 'a')">A) L'ordinateur explose</div>
-                            <div class="quiz-option" onclick="checkAnswer(7, 'b')">B) L'ordinateur devient très lent</div>
-                            <div class="quiz-option" onclick="checkAnswer(7, 'c')">C) Rien ne se passe</div>
-                            <div class="quiz-option" onclick="checkAnswer(7, 'd')">D) L'ordinateur devient plus rapide</div>
-                        </div>
-                        <div id="result7" class="result hide"></div>
-                    </div>
-
-                    <div class="quiz-question">
-                        <h3>Question 8 : Quel composant fournit l'électricité à tous les autres ?</h3>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="checkAnswer(8, 'a')">A) La carte mère</div>
-                            <div class="quiz-option" onclick="checkAnswer(8, 'b')">B) Le processeur</div>
-                            <div class="quiz-option" onclick="checkAnswer(8, 'c')">C) L'alimentation (PSU)</div>
-                            <div class="quiz-option" onclick="checkAnswer(8, 'd')">D) Le disque dur</div>
-                        </div>
-                        <div id="result8" class="result hide"></div>
-                    </div>
-
-                    <button class="btn" onclick="resetQuiz()">🔄 Recommencer le Quiz</button>
-                    <button class="btn" onclick="showScore()">📊 Voir mon Score</button>
-
-                    <div id="scoreBoard" class="result hide" style="background: white; color: #667eea;">
-                        <h3 style="color: #667eea;">Votre Score</h3>
-                        <div class="score-display" id="scoreDisplay">0/8</div>
-                        <p id="scoreMessage"></p>
+                <div class="video-section">
+                    <h2>📹 Vidéo Pédagogique - AMD R7 9800X 3D & RTX 5090🤴 THE ULTIMATE 4K PC BUILD🚀</h2>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <a href="https://youtube.com/shorts/8JwVcI_o3co?si=-a-w__Sh47uJ-tEk" target="_blank"
+                            style="display: inline-block; background: #dc3545; color: white; padding: 15px 40px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.1em;">
+                            ▶️ Cliquez pour regarder la vidéo sur YouTube
+                        </a>
+                        <p style="margin-top: 15px; color: #666; font-size: 0.95em;">
+                            (S'ouvre dans un nouvel onglet)
+                        </p>
                     </div>
                 </div>
-            </div>
 
-            <div class="section">
-                <h2>🎓 Réponse au Cas d'Adil</h2>
-                <div class="conseil-pratique">
-                    <h4>💡 Verdict pour l'ordinateur d'Adil</h4>
-                    <p><strong>Après avoir étudié les composants, voici ce qu'Adil doit vérifier :</strong></p>
-                    <ul style="margin-left: 25px; margin-top: 15px;">
-                        <li><strong>Processeur :</strong> Un CPU de 2010 sera faible pour les jeux récents</li>
-                        <li><strong>RAM :</strong> S'il y a moins de 8 GB, il faudra ajouter de la mémoire</li>
-                        <li><strong>Carte graphique :</strong> C'est le composant le plus important ! Une vieille carte de 2010 ne suffira pas</li>
-                        <li><strong>Ventilateurs :</strong> Il DOIT les nettoyer ou les remplacer pour éviter la surchauffe</li>
-                        <li><strong>Stockage :</strong> Remplacer le HDD par un SSD améliorerait beaucoup les performances</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>Conclusion :</strong> L'ordinateur peut être une bonne affaire SI Adil est prêt à remplacer certains composants (surtout la carte graphique) et à nettoyer/entretenir la machine. Sinon, il vaut mieux chercher quelque chose de plus récent.</p>
+                <div class="container">
+                    <header>
+                        <h1>🖥️ Quiz - Les Composants Internes de l'Ordinateur</h1>
+                    </header>
+
+                    <div class="content">
+                        <div class="quiz-section">
+                            <h2>🎯 Quiz Interactif - Testez vos connaissances</h2>
+
+                            <div class="quiz-question">
+                                <h3>Question 1</h3>
+                                <p class="option-text">Quel composant est considéré comme le "cerveau" de l'ordinateur ?
+                                </p>
+                                <p class="question-arabic">ما المكون الذي يُعتبر "العقل الموجه" الحاسوب؟</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="checkAnswer(1, 'a')">
+                                        <div class="option-text">A) La RAM</div>
+                                        <div class="option-arabic">(الذاكرة العشوائية)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(1, 'b')">
+                                        <div class="option-text">B) Le Processeur (CPU)</div>
+                                        <div class="option-arabic">(المعالج)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(1, 'c')">
+                                        <div class="option-text">C) La Carte Mère</div>
+                                        <div class="option-arabic">(اللوحة الأم)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(1, 'd')">
+                                        <div class="option-text">D) Le Disque Dur</div>
+                                        <div class="option-arabic">(القرص الصلب)</div>
+                                    </div>
+                                </div>
+                                <div id="result1" class="result hide"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h3>Question 2</h3>
+                                <p class="option-text">Quel composant garde vos fichiers même quand l'ordinateur est
+                                    éteint ?</p>
+                                <p class="question-arabic">ما المكون الذي يحتفظ بملفاتك حتى عند إطفاء الحاسوب؟</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="checkAnswer(2, 'a')">
+                                        <div class="option-text">A) La RAM</div>
+                                        <div class="option-arabic">(الذاكرة العشوائية)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(2, 'b')">
+                                        <div class="option-text">B) Le Processeur</div>
+                                        <div class="option-arabic">(المعالج)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(2, 'c')">
+                                        <div class="option-text">C) Le Disque Dur</div>
+                                        <div class="option-arabic">(القرص الصلب)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(2, 'd')">
+                                        <div class="option-text">D) Le Ventilateur</div>
+                                        <div class="option-arabic">(المروحة)</div>
+                                    </div>
+                                </div>
+                                <div id="result2" class="result hide"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h3>Question 3</h3>
+                                <p class="option-text">Quel est le rôle principal de la carte mère ?</p>
+                                <p class="question-arabic">ما هو الدور الرئيسي للوحة الأم؟</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="checkAnswer(3, 'a')">
+                                        <div class="option-text">A) Refroidir l'ordinateur</div>
+                                        <div class="option-arabic">(تبريد الحاسوب)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(3, 'b')">
+                                        <div class="option-text">B) Relier tous les composants entre eux</div>
+                                        <div class="option-arabic">(ربط جميع المكونات معاً)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(3, 'c')">
+                                        <div class="option-text">C) Stocker les données</div>
+                                        <div class="option-arabic">(تخزين البيانات)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(3, 'd')">
+                                        <div class="option-text">D) Afficher les images</div>
+                                        <div class="option-arabic">(عرض الصور)</div>
+                                    </div>
+                                </div>
+                                <div id="result3" class="result hide"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h3>Question 4</h3>
+                                <p class="option-text">Pourquoi les ventilateurs sont-ils importants ?</p>
+                                <p class="question-arabic">لماذا تكون المراوح مهمة؟</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="checkAnswer(4, 'a')">
+                                        <div class="option-text">A) Pour faire du bruit</div>
+                                        <div class="option-arabic">(لإصدار صوت)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(4, 'b')">
+                                        <div class="option-text">B) Pour décorer l'ordinateur</div>
+                                        <div class="option-arabic">(لتزيين الحاسوب)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(4, 'c')">
+                                        <div class="option-text">C) Pour refroidir les composants et éviter la
+                                            surchauffe</div>
+                                        <div class="option-arabic">(لتبريد المكونات وتجنب الإرهاق الحراري)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(4, 'd')">
+                                        <div class="option-text">D) Pour augmenter la vitesse du processeur</div>
+                                        <div class="option-arabic">(لزيادة سرعة المعالج)</div>
+                                    </div>
+                                </div>
+                                <div id="result4" class="result hide"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h3>Question 5</h3>
+                                <p class="option-text">Quel composant est le plus important pour les jeux vidéo ?</p>
+                                <p class="question-arabic">ما أهم مكون لألعاب الفيديو؟</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="checkAnswer(5, 'a')">
+                                        <div class="option-text">A) L'alimentation</div>
+                                        <div class="option-arabic">(مزود الطاقة)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(5, 'b')">
+                                        <div class="option-text">B) La carte graphique (GPU)</div>
+                                        <div class="option-arabic">(بطاقة الرسومات)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(5, 'c')">
+                                        <div class="option-text">C) La carte mère</div>
+                                        <div class="option-arabic">(اللوحة الأم)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(5, 'd')">
+                                        <div class="option-text">D) Le ventilateur</div>
+                                        <div class="option-arabic">(المروحة)</div>
+                                    </div>
+                                </div>
+                                <div id="result5" class="result hide"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h3>Question 6</h3>
+                                <p class="option-text">Quelle est la différence principale entre HDD et SSD ?</p>
+                                <p class="question-arabic">ما الفرق الرئيسي بين HDD و SSD؟</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="checkAnswer(6, 'a')">
+                                        <div class="option-text">A) Le SSD est beaucoup plus rapide</div>
+                                        <div class="option-arabic">(SSD أسرع بكثير)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(6, 'b')">
+                                        <div class="option-text">B) Le HDD est plus rapide</div>
+                                        <div class="option-arabic">(HDD أسرع)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(6, 'c')">
+                                        <div class="option-text">C) Ils ont la même vitesse</div>
+                                        <div class="option-arabic">(لهما نفس السرعة)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(6, 'd')">
+                                        <div class="option-text">D) Le SSD ne peut pas stocker de données</div>
+                                        <div class="option-arabic">(SSD لا يمكنه تخزين البيانات)</div>
+                                    </div>
+                                </div>
+                                <div id="result6" class="result hide"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h3>Question 7</h3>
+                                <p class="option-text">Que se passe-t-il si la RAM est pleine ?</p>
+                                <p class="question-arabic">ماذا يحدث إذا امتلأت ذاكرة الوصول العشوائي؟</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="checkAnswer(7, 'a')">
+                                        <div class="option-text">A) L'ordinateur explose</div>
+                                        <div class="option-arabic">(الحاسوب ينفجر)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(7, 'b')">
+                                        <div class="option-text">B) L'ordinateur devient très lent</div>
+                                        <div class="option-arabic">(يصبح الحاسوب بطيئاً جداً)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(7, 'c')">
+                                        <div class="option-text">C) Rien ne se passe</div>
+                                        <div class="option-arabic">(لا يحدث شيء)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(7, 'd')">
+                                        <div class="option-text">D) L'ordinateur devient plus rapide</div>
+                                        <div class="option-arabic">(يصبح الحاسوب أسرع)</div>
+                                    </div>
+                                </div>
+                                <div id="result7" class="result hide"></div>
+                            </div>
+
+                            <div class="quiz-question">
+                                <h3>Question 8</h3>
+                                <p class="option-text">Quel composant fournit l'électricité à tous les autres ?</p>
+                                <p class="question-arabic">ما المكون الذي يوفر الكهرباء لجميع المكونات الأخرى؟</p>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" onclick="checkAnswer(8, 'a')">
+                                        <div class="option-text">A) La carte mère</div>
+                                        <div class="option-arabic">(اللوحة الأم)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(8, 'b')">
+                                        <div class="option-text">B) Le processeur</div>
+                                        <div class="option-arabic">(المعالج)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(8, 'c')">
+                                        <div class="option-text">C) L'alimentation (PSU)</div>
+                                        <div class="option-arabic">(مزود الطاقة)</div>
+                                    </div>
+                                    <div class="quiz-option" onclick="checkAnswer(8, 'd')">
+                                        <div class="option-text">D) Le disque dur</div>
+                                        <div class="option-arabic">(القرص الصلب)</div>
+                                    </div>
+                                </div>
+                                <div id="result8" class="result hide"></div>
+                            </div>
+
+                            <button class="btn" onclick="resetQuiz()">🔄 Recommencer le Quiz</button>
+                            <button class="btn" onclick="showScore()">📊 Voir mon Score</button>
+
+                            <div id="scoreBoard" class="result hide" style="background: white; color: #667eea;">
+                                <h3 style="color: #667eea;">Votre Score</h3>
+                                <div class="score-display" id="scoreDisplay">0/8</div>
+                                <p id="scoreMessage"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="section">
-                <h2>📝 Résumé et Points Clés</h2>
-                <div class="objectifs">
-                    <h3>À Retenir :</h3>
-                    <ul>
-                        <li><strong>CPU (Processeur) :</strong> Le cerveau qui effectue tous les calculs</li>
-                        <li><strong>RAM :</strong> Mémoire temporaire rapide, perdue à l'extinction</li>
-                        <li><strong>Disque Dur/SSD :</strong> Stockage permanent des fichiers</li>
-                        <li><strong>Carte Mère :</strong> Relie tous les composants entre eux</li>
-                        <li><strong>Alimentation :</strong> Fournit l'énergie électrique nécessaire</li>
-                        <li><strong>Ventilateurs :</strong> Refroidissent pour éviter la surchauffe</li>
-                        <li><strong>Carte Graphique :</strong> Essentielle pour les jeux et l'affichage</li>
-                        <li>Tous les composants travaillent ensemble pour faire fonctionner l'ordinateur</li>
-                        <li>Un composant défectueux peut ralentir ou empêcher le fonctionnement de tout le système</li>
-                    </ul>
+                <div class="section">
+                    <h2>🎓 Réponse au Cas d'Adil</h2>
+                    <div class="conseil-pratique">
+                        <h4>💡 Verdict pour l'ordinateur d'Adil</h4>
+                        <p><strong>Après avoir étudié les composants, voici ce qu'Adil doit vérifier :</strong></p>
+                        <ul style="margin-left: 25px; margin-top: 15px;">
+                            <li><strong>Processeur :</strong> Un CPU de 2010 sera faible pour les jeux récents</li>
+                            <li><strong>RAM :</strong> S'il y a moins de 8 GB, il faudra ajouter de la mémoire</li>
+                            <li><strong>Carte graphique :</strong> C'est le composant le plus important ! Une vieille
+                                carte de 2010 ne suffira pas</li>
+                            <li><strong>Ventilateurs :</strong> Il DOIT les nettoyer ou les remplacer pour éviter la
+                                surchauffe</li>
+                            <li><strong>Stockage :</strong> Remplacer le HDD par un SSD améliorerait beaucoup les
+                                performances</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Conclusion :</strong> L'ordinateur peut être une bonne
+                            affaire SI Adil est prêt à remplacer certains composants (surtout la carte graphique) et à
+                            nettoyer/entretenir la machine. Sinon, il vaut mieux chercher quelque chose de plus récent.
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="section">
-                <h2>🔗 Ressources Complémentaires</h2>
-                <div class="conseil-pratique">
-                    <h4>📚 Pour aller plus loin :</h4>
-                    <ul style="margin-left: 25px; margin-top: 15px;">
-                        <li><strong>Site interactif :</strong> <a href="https://tabdellah.github.io/u1/" target="_blank" style="color: #667eea;">https://tabdellah.github.io/u1/</a> - Exercices pratiques d'identification</li>
-                        <li><strong>Exercice 10 :</strong> Identification visuelle des composants</li>
-                        <li><strong>Exercice 11 :</strong> Association composant ↔ fonction</li>
-                        <li><strong>Exercice 12 :</strong> Quiz de synthèse</li>
-                    </ul>
+                <div class="section">
+                    <h2>📝 Résumé et Points Clés</h2>
+                    <div class="objectifs">
+                        <h3>À Retenir :</h3>
+                        <ul>
+                            <li><strong>CPU (Processeur) :</strong> Le cerveau qui effectue tous les calculs</li>
+                            <li><strong>RAM :</strong> Mémoire temporaire rapide, perdue à l'extinction</li>
+                            <li><strong>Disque Dur/SSD :</strong> Stockage permanent des fichiers</li>
+                            <li><strong>Carte Mère :</strong> Relie tous les composants entre eux</li>
+                            <li><strong>Alimentation :</strong> Fournit l'énergie électrique nécessaire</li>
+                            <li><strong>Ventilateurs :</strong> Refroidissent pour éviter la surchauffe</li>
+                            <li><strong>Carte Graphique :</strong> Essentielle pour les jeux et l'affichage</li>
+                            <li>Tous les composants travaillent ensemble pour faire fonctionner l'ordinateur</li>
+                            <li>Un composant défectueux peut ralentir ou empêcher le fonctionnement de tout le système
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="section">
-                <h2>🏆 Évaluation Finale</h2>
-                <div class="situation-probleme">
-                    <h3>Activité Pratique</h3>
-                    <p><strong>Travail en binôme :</strong></p>
-                    <ol style="margin-left: 25px; margin-top: 15px; line-height: 1.8;">
-                        <li>Accédez au site interactif mentionné ci-dessus</li>
-                        <li>Réalisez les exercices 10, 11 et 12</li>
-                        <li>Discutez avec votre binôme pour identifier chaque composant</li>
-                        <li>Vérifiez vos réponses en ligne</li>
-                        <li>Prenez des notes dans votre cahier</li>
-                    </ol>
-                    <p style="margin-top: 15px;"><strong>Objectif :</strong> Être capable d'identifier visuellement tous les composants et d'expliquer leur fonction.</p>
+                <div class="section">
+                    <h2>🔗 Ressources Complémentaires</h2>
+                    <div class="conseil-pratique">
+                        <h4>📚 Pour aller plus loin :</h4>
+                        <ul style="margin-left: 25px; margin-top: 15px;">
+                            <li><strong>Site interactif :</strong> <a href="https://tabdellah.github.io/u1/"
+                                    target="_blank" style="color: #667eea;">https://tabdellah.github.io/u1/</a> -
+                                Exercices pratiques d'identification</li>
+                            <li><strong>Exercice 10 :</strong> Identification visuelle des composants</li>
+                            <li><strong>Exercice 11 :</strong> Association composant ↔ fonction</li>
+                            <li><strong>Exercice 12 :</strong> Quiz de synthèse</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🏆 Évaluation Finale</h2>
+                    <div class="situation-probleme">
+                        <h3>Activité Pratique</h3>
+                        <p><strong>Travail en binôme :</strong></p>
+                        <ol style="margin-left: 25px; margin-top: 15px; line-height: 1.8;">
+                            <li>Accédez au site interactif mentionné ci-dessus</li>
+                            <li>Réalisez les exercices 10, 11 et 12</li>
+                            <li>Discutez avec votre binôme pour identifier chaque composant</li>
+                            <li>Vérifiez vos réponses en ligne</li>
+                            <li>Prenez des notes dans votre cahier</li>
+                        </ol>
+                        <p style="margin-top: 15px;"><strong>Objectif :</strong> Être capable d'identifier visuellement
+                            tous les composants et d'expliquer leur fonction.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        const answers = {
-            1: 'b',
-            2: 'c',
-            3: 'b',
-            4: 'c',
-            5: 'b',
-            6: 'a',
-            7: 'b',
-            8: 'c'
-        };
+        <script>
+            const answers = {
+                1: 'b',
+                2: 'c',
+                3: 'b',
+                4: 'c',
+                5: 'b',
+                6: 'a',
+                7: 'b',
+                8: 'c'
+            };
 
-        let userAnswers = {};
-        let correctCount = 0;
+            let userAnswers = {};
+            let correctCount = 0;
 
-        function checkAnswer(question, answer) {
-            const options = document.querySelectorAll(`#result${question}`)[0].parentElement.querySelectorAll('.quiz-option');
-            
-            // Retirer les anciennes classes
-            options.forEach(opt => {
-                opt.classList.remove('selected', 'correct', 'incorrect');
-            });
+            function checkAnswer(question, answer) {
+                const options = document.querySelectorAll(`#result${question}`)[0].parentElement.querySelectorAll('.quiz-option');
 
-            // Marquer la réponse sélectionnée
-            event.target.classList.add('selected');
-            userAnswers[question] = answer;
+                // Retirer les anciennes classes
+                options.forEach(opt => {
+                    opt.classList.remove('selected', 'correct', 'incorrect');
+                });
 
-            const resultDiv = document.getElementById(`result${question}`);
-            resultDiv.className = 'result show';
+                // Marquer la réponse sélectionnée
+                event.target.classList.add('selected');
+                userAnswers[question] = answer;
 
-            if (answer === answers[question]) {
-                event.target.classList.add('correct');
-                resultDiv.style.background = '#d4edda';
-                resultDiv.style.color = '#155724';
-                resultDiv.textContent = '✓ Excellente réponse ! Vous avez bien compris !';
-            } else {
-                event.target.classList.add('incorrect');
-                resultDiv.style.background = '#f8d7da';
-                resultDiv.style.color = '#721c24';
-                resultDiv.textContent = '✗ Réponse incorrecte. Relisez le cours et réessayez !';
-                
-                // Réinitialiser après 2 secondes
-                setTimeout(() => {
-                    options.forEach(opt => opt.classList.remove('selected', 'incorrect'));
-                    resultDiv.className = 'result hide';
-                    delete userAnswers[question];
-                }, 2000);
-            }
-        }
+                const resultDiv = document.getElementById(`result${question}`);
+                resultDiv.className = 'result show';
 
-        function resetQuiz() {
-            const allOptions = document.querySelectorAll('.quiz-option');
-            allOptions.forEach(opt => {
-                opt.classList.remove('selected', 'correct', 'incorrect');
-            });
+                if (answer === answers[question]) {
+                    event.target.classList.add('correct');
+                    resultDiv.style.background = '#d4edda';
+                    resultDiv.style.color = '#155724';
+                    resultDiv.textContent = '✓ Excellente réponse ! Vous avez bien compris !';
+                } else {
+                    event.target.classList.add('incorrect');
+                    resultDiv.style.background = '#f8d7da';
+                    resultDiv.style.color = '#721c24';
+                    resultDiv.textContent = '✗ Réponse incorrecte. Relisez le cours et réessayez !';
 
-            const allResults = document.querySelectorAll('.result');
-            allResults.forEach(res => {
-                res.className = 'result hide';
-            });
-
-            userAnswers = {};
-            correctCount = 0;
-            
-            document.getElementById('scoreBoard').className = 'result hide';
-        }
-
-        function showScore() {
-            correctCount = 0;
-            for (let q in answers) {
-                if (userAnswers[q] === answers[q]) {
-                    correctCount++;
+                    // Réinitialiser après 2 secondes
+                    setTimeout(() => {
+                        options.forEach(opt => opt.classList.remove('selected', 'incorrect'));
+                        resultDiv.className = 'result hide';
+                        delete userAnswers[question];
+                    }, 2000);
                 }
             }
 
-            const totalQuestions = Object.keys(answers).length;
-            const percentage = (correctCount / totalQuestions) * 100;
-            
-            const scoreBoard = document.getElementById('scoreBoard');
-            const scoreDisplay = document.getElementById('scoreDisplay');
-            const scoreMessage = document.getElementById('scoreMessage');
+            function resetQuiz() {
+                const allOptions = document.querySelectorAll('.quiz-option');
+                allOptions.forEach(opt => {
+                    opt.classList.remove('selected', 'correct', 'incorrect');
+                });
 
-            scoreDisplay.textContent = `${correctCount}/${totalQuestions}`;
-            
-            let message = '';
-            if (percentage === 100) {
-                message = '🎉 Parfait ! Vous maîtrisez parfaitement le sujet !';
-                scoreBoard.style.background = '#d4edda';
-                scoreBoard.style.color = '#155724';
-            } else if (percentage >= 75) {
-                message = '👏 Très bien ! Vous avez une bonne compréhension du sujet !';
-                scoreBoard.style.background = '#d1ecf1';
-                scoreBoard.style.color = '#0c5460';
-            } else if (percentage >= 50) {
-                message = '👍 Pas mal ! Relisez le cours pour améliorer votre score.';
-                scoreBoard.style.background = '#fff3cd';
-                scoreBoard.style.color = '#856404';
-            } else {
-                message = '📚 Il faut revoir le cours. Prenez votre temps et réessayez !';
-                scoreBoard.style.background = '#f8d7da';
-                scoreBoard.style.color = '#721c24';
+                const allResults = document.querySelectorAll('.result');
+                allResults.forEach(res => {
+                    res.className = 'result hide';
+                });
+
+                userAnswers = {};
+                correctCount = 0;
+
+                document.getElementById('scoreBoard').className = 'result hide';
             }
 
-            scoreMessage.textContent = message;
-            scoreBoard.className = 'result show';
-            
-            // Scroll vers le score
-            scoreBoard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+            function showScore() {
+                correctCount = 0;
+                for (let q in answers) {
+                    if (userAnswers[q] === answers[q]) {
+                        correctCount++;
+                    }
+                }
 
-        // Navigation fluide
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                targetElement.scrollIntoView({ behavior: 'smooth' });
+                const totalQuestions = Object.keys(answers).length;
+                const percentage = (correctCount / totalQuestions) * 100;
+
+                const scoreBoard = document.getElementById('scoreBoard');
+                const scoreDisplay = document.getElementById('scoreDisplay');
+                const scoreMessage = document.getElementById('scoreMessage');
+
+                scoreDisplay.textContent = `${correctCount}/${totalQuestions}`;
+
+                let message = '';
+                if (percentage === 100) {
+                    message = '🎉 Parfait ! Vous maîtrisez parfaitement le sujet !';
+                    scoreBoard.style.background = '#d4edda';
+                    scoreBoard.style.color = '#155724';
+                } else if (percentage >= 75) {
+                    message = '👏 Très bien ! Vous avez une bonne compréhension du sujet !';
+                    scoreBoard.style.background = '#d1ecf1';
+                    scoreBoard.style.color = '#0c5460';
+                } else if (percentage >= 50) {
+                    message = '👍 Pas mal ! Relisez le cours pour améliorer votre score.';
+                    scoreBoard.style.background = '#fff3cd';
+                    scoreBoard.style.color = '#856404';
+                } else {
+                    message = '📚 Il faut revoir le cours. Prenez votre temps et réessayez !';
+                    scoreBoard.style.background = '#f8d7da';
+                    scoreBoard.style.color = '#721c24';
+                }
+
+                scoreMessage.textContent = message;
+                scoreBoard.className = 'result show';
+
+                // Scroll vers le score
+                scoreBoard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Navigation fluide
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                });
             });
-        });
-    </script>
+        </script>
 </body>
+
 </html>
