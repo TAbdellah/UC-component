@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Composants Internes de l'Ordinateur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe6f0 25%, #e6f3ff 50%, #f0e6ff 75%, #fff9e6 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe6f0 25%, #e6f3ff 50%, #f0e6ff 75%, #fff9e6 100%);
+            color: black;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        nav {
+            background: #f8f9fa;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            scroll-margin-top: 80px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #667eea;
+            position: relative;
+        }
+
+        .objectifs {
+            background: linear-gradient(135deg, #e7f0ff 0%, #f0e7ff 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 25px 0;
+            border: 2px solid #667eea;
+        }
+
+        .objectifs ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .objectifs li {
+            padding: 15px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .objectifs li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .situation-probleme {
+            background: linear-gradient(135deg, #fff8dc 0%, #ffeaa7 100%);
+            border-left: 6px solid #ffc107;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+        }
+
+        .situation-probleme h3 {
+            color: #d68910;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .situation-probleme p {
+            margin: 15px 0;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        /* GRILLE 3X3 */
+        .schema-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .chassis-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #2a2a3e 0%, #16213e 100%);
+            border-radius: 20px;
+            border: 4px solid #667eea;
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            padding: 30px;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 20px;
+            min-height: 800px;
+        }
+
+        .component-box {
+            position: relative;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .component-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            border-color: #fff;
+        }
+
+        .component-box:hover img {
+            transform: scale(1.5);
+            cursor: pointer;
+        }
+
+        .component-box img {
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .component-name {
+            font-weight: bold;
+            font-size: 1em;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .component-role {
+            font-size: 0.8em;
+            color: #888;
+            text-align: center;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .modal-text-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-image-side {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .modal-description {
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            max-height: none;
+            overflow-y: visible;
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .modal-description ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .modal-description li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #333;
+            line-height: 1.7;
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        .modal-description li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .modal-image-side img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-image-side {
+                order: -1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #764ba2;
+            transform: scale(1.2);
+        }
+
+        .info-panel {
+            background: linear-gradient(135deg, #e7f0ff 0%, #f0e7ff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            display: none;
+            border-left: 5px solid #667eea;
+            animation: slideIn 0.3s ease;
+        }
+
+        .info-panel.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-panel h3 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .info-panel p {
+            color: #555;
+            line-height: 1.8;
+            margin: 10px 0;
+            font-size: 1.05em;
+        }
+
+        .legend {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #e7f0ff 0%, #f0e7ff 100%);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .legend h4 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .legend-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .legend-item {
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border-left: 3px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .legend-item p {
+            margin: 0;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .conseil-pratique {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 6px solid #17a2b8;
+        }
+
+        .conseil-pratique h4 {
+            color: #0c7489;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .chassis-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🖥️ Les Composants Internes de l'Unité Centrale</h1>
+            <p class="subtitle">Niveau: 2ème Année Cycle Collégial</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#objectifs">📋 Objectifs</a></li>
+                <li><a href="#situation">🎯 Situation</a></li>
+                <li><a href="#composants">🔧 Composants</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <div class="section" id="objectifs">
+                <h2>📋 Objectifs Pédagogiques</h2>
+                <div class="objectifs">
+                    <ul>
+                        <li>Identifier visuellement les composants internes de l'unité centrale</li>
+                        <li>Comprendre la fonction principale de chaque composant</li>
+                        <li>Comprendre l'interaction entre composants internes et périphériques</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section" id="situation">
+                <h2>🎯 Situation Problème - Le Cas de Sara</h2>
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; margin-top: 30px;">
+                    <div class="situation-probleme">
+                        <h3>📖 Le Contexte</h3>
+                        <p><strong>Sara</strong> a hérité d’un ancien ordinateur de son oncle. Elle veut l’utiliser pour apprendre le montage vidéo, mais elle ne sait pas s’il est assez puissant.</p>
+
+                        <h3>⚠️ Le Problème</h3>
+                        <p>Quand elle l’allume, l’ordinateur est lent et fait beaucoup de bruit. En ouvrant le boîtier, elle remarque :</p>
+                        <ul style="margin-left: 25px; margin-top: 10px;">
+                         <li>Plusieurs câbles débranchés</li>
+                         <li>De la poussière sur les composants</li>
+                         <li>Un ventilateur qui ne tourne pas</li>
+                         <li>Et elle ne sait pas à quoi servent les différentes pièces</li>
+                        </ul>
+                        <br>
+                        <h3>❓ La Question</h3>
+                        <p><strong>Comment Sara peut-elle reconnaître les composants de son ordinateur et vérifier lesquels doivent être nettoyés, réparés ou remplacés ?</strong></p>
+                    </div>
+
+                    <div
+                        style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+                        <img src="https://preview.redd.it/10-year-old-computer-motherboard-revived-once-again-with-a-v0-pemjiqdzfkr81.jpg?width=1080&crop=smart&auto=webp&s=0d957068f75ca199f91e39b6e41eb1f243107949"
+                            alt="Ordinateur poussiéreux"
+                            style="width: 100%; height: auto; display: block; border-radius: 15px;">
+                        <p
+                            style="padding: 15px; text-align: center; font-style: italic; color: #666; margin: 0; background: #f8f9fa;">
+                            💡 L'unité centrale poussiéreux d'Sara</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="composants">
+                <h2>🔧 Les Composants Internes</h2>
+
+                <div id="imageModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-btn" onclick="closeModal()">&times;</span>
+
+                        <div class="modal-header">
+                            <div class="modal-title" id="modalTitle">Composant</div>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="modal-text-side">
+                                <div class="modal-description" id="modalDescription"></div>
+                            </div>
+                            <div class="modal-image-side">
+                                <img id="modalImage" src="" alt="Composant agrandi">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schema-container">
+                    <div class="chassis-container">
+                        <!-- Ligne 1 -->
+                        <div class="component-box cpu" onclick="showInfo('cpu')">
+                            <img src="https://i.imgur.com/s7HPQ9D.png" alt="Processeur"
+                                onclick="openModal(event, 'CPU - Processeur')">
+                            <div class="component-name">🧠 CPU</div>
+                            <div class="component-role">Processeur</div>
+                        </div>
+
+                        <div class="component-box ram" onclick="showInfo('ram')">
+                            <img src="https://i.imgur.com/uoT2YwA.png" alt="Mémoire RAM"
+                                onclick="openModal(event, 'RAM - Mémoire')">
+                            <div class="component-name">💾 RAM</div>
+                            <div class="component-role">Mémoire</div>
+                        </div>
+
+                        <div class="component-box storage" onclick="showInfo('storage')">
+                            <img src="https://i.imgur.com/WYENdKP.png" alt="Stockage"
+                                onclick="openModal(event, 'Storage - Stockage')">
+                            <div class="component-name">💽 STORAGE</div>
+                            <div class="component-role">Stockage</div>
+                            <a href="https://youtu.be/MpNagBwWlNk" target="_blank">
+                                ▶️
+                            </a>
+                        </div>
+
+                        <!-- Ligne 2 -->
+                        <div class="component-box gpu" onclick="showInfo('gpu')">
+                            <img src="https://i.imgur.com/ck4CWKF.png" alt="Carte Graphique"
+                                onclick="openModal(event, 'GPU - Carte Graphique')">
+                            <div class="component-name">🎮 GPU</div>
+                            <div class="component-role">Carte Graphique</div>
+                        </div>
+
+                        <div class="component-box motherboard" onclick="showInfo('motherboard')">
+                            <img src="https://i.imgur.com/7xmWMsb.png" alt="Carte Mère"
+                                onclick="openModal(event, 'Carte Mère')">
+                            <div class="component-name">🔌 CARTE MÈRE</div>
+                            <div class="component-role">Relie tous les composants</div>
+                        </div>
+
+                        <div class="component-box psu" onclick="showInfo('psu')">
+                            <img src="https://i.imgur.com/nCdAHs2.png" alt="Alimentation"
+                                onclick="openModal(event, 'PSU - Alimentation')">
+                            <div class="component-name">⚡ PSU</div>
+                            <div class="component-role">Alimentation</div>
+                        </div>
+
+                        <!-- Ligne 3 -->
+                        <div class="component-box wifi" onclick="showInfo('wifi')">
+                            <img src="https://i.imgur.com/iII1WnU.png" alt="WiFi"
+                                onclick="openModal(event, 'WiFi - Connexion Wireless')">
+                            <div class="component-name">📡 WiFi</div>
+                            <div class="component-role">Connexion Wireless</div>
+                        </div>
+
+                        <div class="component-box network" onclick="showInfo('network')">
+                            <img src="https://i.imgur.com/h4QTr00.png" alt="Réseau"
+                                onclick="openModal(event, 'Réseau RJ45')">
+                            <div class="component-name">🌐 RÉSEAU</div>
+                            <div class="component-role">Connexion Ethernet</div>
+                        </div>
+
+                        <div class="component-box cooling" onclick="showInfo('cooling')">
+                            <img src="https://i.imgur.com/EV2ITBd.png" alt="Ventilateur"
+                                onclick="openModal(event, 'Ventilateurs - Refroidissement')">
+                            <div class="component-name">❄️ COOLING</div>
+                            <div class="component-role">Refroidissement</div>
+                            <a href="https://youtu.be/yRcFM1XAL_Q?si=tK9KBLK0c-V1otiK" target="_blank">
+                                ▶️
+                            </a>
+                        </div>
+                    </div>
+
+                    <div id="infoPanel" class="info-panel">
+                        <h3 id="infoTitle">Information</h3>
+                        <p id="infoContent">Cliquez sur un composant pour voir plus d'informations</p>
+                    </div>
+
+                    <div class="legend">
+                        <h4>📚 Légende des Composants</h4>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <strong>🧠 CPU (Processeur)</strong>
+                                <p>Le cerveau qui effectue tous les calculs</p>
+                            </div>
+                            <div class="legend-item">
+                                <strong>💾 RAM (Mémoire)</strong>
+                                <p>Mémoire temporaire rapide, perdue à l'extinction</p>
+                            </div>
+                            <div class="legend-item">
+                                <strong>💽 STORAGE (Stockage)</strong>
+                                <p>Stockage permanent des fichiers (HDD/SSD)</p>
+                            </div>
+                            <div class="legend-item">
+                                <strong>🎮 GPU (Carte Graphique)</strong>
+                                <p>Essentielle pour les jeux et l'affichage</p>
+                            </div>
+                            <div class="legend-item">
+                                <strong>🔌 CARTE MÈRE</strong>
+                                <p>Relie tous les composants entre eux</p>
+                            </div>
+                            <div class="legend-item">
+                                <strong>⚡ PSU (Alimentation)</strong>
+                                <p>Fournit l'énergie électrique nécessaire</p>
+                            </div>
+                            <div class="legend-item">
+                                <strong>📡 WiFi</strong>
+                                <p>Connexion Internet sans fil</p>
+                            </div>
+                            <div class="legend-item">
+                                <strong>🌐 RÉSEAU (Ethernet)</strong>
+                                <p>Connexion Internet filaire stable</p>
+                            </div>
+                            <div class="legend-item">
+                                <strong>❄️ COOLING (Ventilateurs)</strong>
+                                <p>Refroidit pour éviter la surchauffe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                      <div class="section">
+                    <h2>🎓 Réponse au Cas d'Sara</h2>
+                    <div class="conseil-pratique">
+                        <h4>💡 Verdict pour l'ordinateur d'Sara</h4>
+                        <p><strong>Après avoir étudié les composants, voici ce qu'Sara doit vérifier :</strong></p>
+                        <ul style="margin-left: 25px; margin-top: 15px;">
+                            <li><strong>Processeur :</strong> Un CPU de 2010 sera faible pour les jeux récents</li>
+                            <li><strong>RAM :</strong> S'il y a moins de 8 GB, il faudra ajouter de la mémoire</li>
+                            <li><strong>Carte graphique :</strong> C'est le composant le plus important ! Une vieille
+                                carte de 2010 ne suffira pas</li>
+                            <li><strong>Ventilateurs :</strong> Il DOIT les nettoyer ou les remplacer pour éviter la
+                                surchauffe</li>
+                            <li><strong>Stockage :</strong> Remplacer le HDD par un SSD améliorerait beaucoup les
+                                performances</li>
+                        </ul>
+                        <p style="margin-top: 15px;"><strong>Conclusion :</strong> L'ordinateur peut être une bonne
+                            affaire SI Sara est prêt à remplacer certains composants (surtout la carte graphique) et à
+                            nettoyer/entretenir la machine. Sinon, il vaut mieux chercher quelque chose de plus récent.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📝 Résumé et Points Clés</h2>
+                    <div class="objectifs">
+                        <h3>À Retenir :</h3>
+                        <ul>
+                            <li><strong>CPU (Processeur) :</strong> Le cerveau qui effectue tous les calculs</li>
+                            <li><strong>RAM :</strong> Mémoire temporaire rapide, perdue à l'extinction</li>
+                            <li><strong>Disque Dur/SSD :</strong> Stockage permanent des fichiers</li>
+                            <li><strong>Carte Mère :</strong> Relie tous les composants entre eux</li>
+                            <li><strong>Alimentation :</strong> Fournit l'énergie électrique nécessaire</li>
+                            <li><strong>Ventilateurs :</strong> Refroidissent pour éviter la surchauffe</li>
+                            <li><strong>Carte Graphique :</strong> Essentielle pour les jeux et l'affichage</li>
+                            <li>Tous les composants travaillent ensemble pour faire fonctionner l'ordinateur</li>
+                            <li>Un composant défectueux peut ralentir ou empêcher le fonctionnement de tout le système
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🔗 Ressources Complémentaires</h2>
+                    <div class="conseil-pratique">
+                        <h4>📚 Pour aller plus loin :</h4>
+                        <ul style="margin-left: 25px; margin-top: 15px;">
+                            <li><strong>Site interactif :</strong> <a href="https://tabdellah.github.io/u1/"
+                                    target="_blank" style="color: #667eea;">https://tabdellah.github.io/u1/</a> -
+                                Exercices pratiques d'identification</li>
+                            <li><strong>Exercice 10 :</strong> Identification visuelle des composants</li>
+                            <li><strong>Exercice 11 :</strong> Association composant ↔ fonction</li>
+                            <li><strong>Exercice 12 :</strong> Quiz de synthèse</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>🏆 Évaluation Finale</h2>
+                    <div class="situation-probleme">
+                        <h3>Activité Pratique</h3>
+                        <p><strong>Travail en binôme :</strong></p>
+                        <ol style="margin-left: 25px; margin-top: 15px; line-height: 1.8;">
+                            <li>Accédez au site interactif mentionné ci-dessus</li>
+                            <li>Réalisez les exercices 10, 11 et 12</li>
+                            <li>Discutez avec votre binôme pour identifier chaque composant</li>
+                            <li>Vérifiez vos réponses en ligne</li>
+                            <li>Prenez des notes dans votre cahier</li>
+                        </ol>
+                        <p style="margin-top: 15px;"><strong>Objectif :</strong> Être capable d'identifier visuellement
+                            tous les composants et d'expliquer leur fonction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        const componentInfo = {
+            motherboard: {
+                title: '🔌 Carte Mère',
+                content: 'Relie tous les composants entre eux. Circuit imprimé principal contenant les sockets CPU, slots RAM, connecteurs SATA et ports I/O. Sans la carte mère, aucun composant ne peut communiquer.'
+            },
+            cpu: {
+                title: '🧠 Processeur (CPU)',
+                content: 'Le cerveau de l\'ordinateur. Effectue tous les calculs. Mesures : GHz (fréquence) et nombre de cœurs. Plus rapide = plus performant. Un CPU de 2010 sera insuffisant pour les jeux modernes.'
+            },
+            ram: {
+                title: '💾 Mémoire RAM',
+                content: 'Mémoire de travail temporaire et très rapide. Stocke les programmes en cours. Perd tout quand on éteint. Minimum 8 GB recommandé pour les jeux. Si la RAM est pleine, l\'ordinateur devient très lent.'
+            },
+            gpu: {
+                title: '🎮 Carte Graphique (GPU)',
+                content: 'LE composant ESSENTIEL pour les jeux. Traite l\'affichage des images et vidéos. Plus puissante = jeux plus fluides et beaux. C\'est le premier composant à améliorer pour de meilleures performances en jeu.'
+            },
+            psu: {
+                title: '⚡ Alimentation (PSU)',
+                content: 'Fournit l\'énergie à tous les composants. Puissances : 400W, 500W, 650W, 750W... Élément crucial pour la stabilité. Une mauvaise alimentation peut endommager TOUS les composants.'
+            },
+            cooling: {
+                title: '❄️ Ventilateurs',
+                content: 'Refroidissent les composants pour éviter la surchauffe. CPU : 80-90°C sous charge. La poussière doit être nettoyée régulièrement. Des ventilateurs poussiéreux causent la surchauffe et réduisent les performances.'
+            },
+            storage: {
+                title: '💽 Stockage (HDD/SSD)',
+                content: 'Garde fichiers et programmes de façon permanente. SSD : très rapide (10s pour démarrer), plus cher. HDD : moins cher, lent (1-2 min pour démarrer). SSD est fortement recommandé.'
+            },
+            wifi: {
+                title: '📡 WiFi',
+                content: 'Connexion Internet sans fil. Pratique pour la mobilité mais moins stable que l\'Ethernet. WiFi 6 est plus rapide que WiFi 5. Peut souffrir d\'interférences et d\'une latence plus élevée.'
+            },
+            network: {
+                title: '🌐 Réseau (Ethernet RJ45)',
+                content: 'Connexion Internet filaire via câble Ethernet. Plus stable et plus rapide que le WiFi. Latence plus faible idéale pour les jeux en ligne. Vitesse standard : 1 Gbps, récemment 2.5 ou 10 Gbps.'
+            }
+        };
+
+        const descriptionItems = {
+            motherboard: [
+                'Relie TOUS les composants entre eux',
+                'Circuit imprimé principal de l\'ordinateur',
+                'Contient sockets CPU, slots RAM, ports I/O',
+                'Sans elle : pas de communication entre composants'
+            ],
+            cpu: [
+                'Le "cerveau" qui effectue tous les calculs',
+                'Vitesse mesurée en GHz (plus = mieux)',
+                'Nombre de cœurs importants (2, 4, 8, 16...)',
+                'Marques : Intel Core / AMD Ryzen'
+            ],
+            ram: [
+                'Mémoire de travail TEMPORAIRE et très rapide',
+                'Perd tout à l\'extinction de l\'ordinateur',
+                'Minimum 8 GB recommandé pour les jeux',
+                'Plus de RAM = multitâche plus fluide'
+            ],
+            gpu: [
+                'ESSENTIEL pour les jeux vidéo',
+                'Traite l\'affichage des images et vidéos',
+                'Plus puissante = jeux plus fluides et beaux',
+                'Marques : NVIDIA (RTX) / AMD (Radeon)'
+            ],
+            psu: [
+                'Fournit l\'ÉLECTRICITÉ à tous les composants',
+                'Mesurée en Watts : 400W, 500W, 650W, 750W...',
+                'Élément CRUCIAL pour la stabilité',
+                'Mauvaise qualité = risque endommagement total'
+            ],
+            cooling: [
+                'Refroidit les composants (surtout CPU & GPU)',
+                'CPU atteint 80-90°C sous charge',
+                'La poussière bloque le flux d\'air',
+                'Nécessaire nettoyage régulier (évite surchauffe)'
+            ],
+            storage: [
+                'Garde fichiers et programmes de façon PERMANENTE',
+                'SSD : très rapide (10s démarrage), plus cher',
+                'HDD : moins cher, lent (1-2 min démarrage)',
+                'SSD fortement recommandé pour performances',
+            ],
+            wifi: [
+                'Connexion Internet SANS FIL',
+                'Pratique pour mobilité (moins de câbles)',
+                'Moins stable et latence plus élevée',
+                'WiFi 6 plus rapide que WiFi 5'
+            ],
+            network: [
+                'Connexion Internet FILAIRE (câble Ethernet)',
+                'Plus stable et plus rapide que WiFi',
+                'Latence plus faible (parfait pour jeux en ligne)',
+                'Vitesse standard : 1 Gbps (2.5/10 Gbps récents)'
+            ]
+        };
+
+        function showInfo(component) {
+            const panel = document.getElementById('infoPanel');
+            const title = document.getElementById('infoTitle');
+            const content = document.getElementById('infoContent');
+
+            if (componentInfo[component]) {
+                title.textContent = componentInfo[component].title;
+                content.textContent = componentInfo[component].content;
+                panel.classList.add('active');
+                panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function openModal(event, title) {
+            event.stopPropagation();
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const img = event.target;
+
+            // Extraire le composant du title
+            const componentKey = getComponentKey(title);
+
+            modalImage.src = img.src;
+            modalTitle.textContent = title;
+
+            // Créer la liste des points essentiels
+            if (descriptionItems[componentKey]) {
+                const listHTML = '<ul>' +
+                    descriptionItems[componentKey].map(item => `<li>${item}</li>`).join('') +
+                    '</ul>';
+                modalDescription.innerHTML = listHTML;
+            }
+
+            modal.classList.add('active');
+        }
+
+        function getComponentKey(title) {
+            if (title.includes('Mère')) return 'motherboard';
+            if (title.includes('CPU')) return 'cpu';
+            if (title.includes('RAM')) return 'ram';
+            if (title.includes('GPU')) return 'gpu';
+            if (title.includes('PSU')) return 'psu';
+            if (title.includes('Ventilateur') || title.includes('Refroidissement')) return 'cooling';
+            if (title.includes('Storage')) return 'storage';
+            if (title.includes('WiFi')) return 'wifi';
+            if (title.includes('Réseau') || title.includes('RJ45')) return 'network';
+            return 'motherboard';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        // Fermer le modal en cliquant en dehors
+        document.addEventListener('click', function (event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Navigation fluide
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>
